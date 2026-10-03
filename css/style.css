@@ -1,0 +1,265 @@
+/* Reset en basis stijlen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background: #f0f0f0;
+    color: #333;
+    position: relative;
+}
+
+#content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Achtergrond stijlen */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: url('../img/mountain.jpg'); /* Voeg je eigen afbeelding toe */
+    background-size: cover;
+    background-position: center;
+    animation: scaleBackground 30s ease-in-out infinite alternate;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4); /* Verminder de dekking van de overlay */
+    z-index: -1;
+}
+
+/* Header stijlen */
+.header {
+    position: relative;
+    color: #000;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 180px 20px 100px;
+    opacity: 0;
+}
+
+.header h1 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #000;
+    animation: expandLine 1s ease forwards;
+}
+
+.header h2 {
+    transform: translateX(100%);
+    opacity: 0;
+    animation: slideIn 1s forwards 0.5s;
+}
+.subtitle {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Animatie showcase */
+.animation-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.floating-element {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    border-radius: 50%;
+}
+
+/* Animatie classes */
+.fade-in {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.slide-in {
+    animation: slideIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Interactieve animatie stijlen */
+.interactive-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.interactive-ball {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.interactive-ball:nth-child(1) { transform: translate(-200px, -50px); }
+.interactive-ball:nth-child(2) { transform: translate(-100px, 50px); }
+.interactive-ball:nth-child(3) { transform: translate(0, -20px); }
+.interactive-ball:nth-child(4) { transform: translate(100px, 50px); }
+.interactive-ball:nth-child(5) { transform: translate(200px, -50px); }
+
+.interactive-ball:hover {
+    transform: scale(1.2) translateZ(50px);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+}
+
+/* Cube container en cube stijlen */
+.cube-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    backdrop-filter: blur(5px);
+    user-select: none;
+}
+
+/* Face posities */
+.front  { transform: translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+/* Rotatie animatie */
+@keyframes rotate {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* Click instructie */
+.click-instruction {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #4f46e5;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    order: 1;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+/* Voeg een nieuwe klasse toe voor de fade-out kleur */
+.fade-out {
+    background: rgba(70, 130, 180, 0.9); /* Fel blauwe kleur voor de fade-out */
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto;
+    z-index: 2;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

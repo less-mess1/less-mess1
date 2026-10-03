@@ -1,0 +1,210 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -2; /* Zorg ervoor dat de achtergrond onder de inhoud ligt */
+    background-image: url('../img/mountain.jpg'); /* Voeg je achtergrondafbeelding toe */
+    background-size: cover; /* Zorg ervoor dat de afbeelding de hele achtergrond bedekt */
+    background-position: center; /* Center de achtergrondafbeelding */
+    background-attachment: fixed; /* Zorg ervoor dat de achtergrond niet beweegt */
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto; /* Voeg marge toe om ruimte te creëren */
+    background: rgba(255, 255, 255, 0.9); /* Hoofdinhoud achtergrondkleur met transparantie */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Begin met een onzichtbare container */
+    animation: fadeIn 1s forwards;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
+}
+
+h3 {
+    border-bottom: 2px solid #333; /* Onderstreping voor sectietitels */
+    padding-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.7); /* Voettekst achtergrondkleur */
+    color: #fff;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #fff; /* Witte kleur voor de links in de footer */
+    text-decoration: none; /* Geen onderstreping */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Onderstreping bij hover */
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto; /* Centraal uitlijnen met automatische marges */
+    max-width: 800px; /* Maximaal breedte instellen voor de container */
+    padding: 20px; /* Voeg wat padding toe voor ruimte */
+    background: rgba(255, 255, 255, 0.9); /* Achtergrondkleur voor de container */
+    border-radius: 10px; /* Maak de hoeken van de container rond */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
+    padding-bottom: 100px;
+    margin-bottom: 50px;
+}
+
+.profile-photo-container {
+    width: 150px; /* Gewenste breedte van de profielfoto container */
+    height: 150px; /* Gewenste hoogte van de profielfoto container */
+    overflow: hidden; /* Verberg eventuele overflow om de afbeelding bij te snijden */
+    border-radius: 50%; /* Maak de container rond */
+    margin-right: 20px; /* Ruimte tussen de foto en de tekst */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Schaduw voor diepte */
+}
+
+.profile-photo {
+    width: 100%; /* Vul de container breedte */
+    height: 100%; /* Vul de container hoogte */
+    object-fit: cover; /* Snijd de afbeelding bij om de container te vullen */
+    object-position: center; /* Centreer de afbeelding binnen de container */
+}
+
+.profile-info {
+    text-align: center; /* Zorg ervoor dat de tekst links uitgelijnd is */
+}
+
+.header {
+    position: relative;
+    color: #000;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 180px 20px 100px;
+    opacity: 0;
+}
+
+.header h1 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #000;
+    animation: expandLine 1s ease forwards;
+}
+
+.header h2 {
+    transform: translateX(100%);
+    opacity: 0;
+    animation: slideIn 1s forwards 0.5s;
+}
+
+.subtitle {
+    transform: translateX(-200%);
+    opacity: 0;
+}
+
+/* Animatie showcase */
+.animation-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.floating-element {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #6366f1, #8b5cf6);
+    border-radius: 50%;
+}
+
+/* Animatie classes */
+.fade-in {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.slide-in {
+    animation: slideIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Eindig met volledig zichtbare container */
+    }
+}
+
+section {
+    opacity: 0; /* Begin met een onzichtbare sectie */
+    transform: translateY(20px); /* Begin iets naar beneden */
+    animation: slideIn 0.5s forwards; /* Slide-in animatie */
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1; /* Eindig met volledig zichtbare sectie */
+        transform: translateY(0); /* Eindig op de normale positie */
+    }
+}
+
+/* Specifieke animaties voor elke sectie met vertraging */
+.personal-info {
+    animation-delay: 0.5s; /* Vertraging voor Personal Information */
+}
+
+.education {
+    animation-delay: 1s; /* Vertraging voor Education */
+}
+
+.work-experience {
+    animation-delay: 1.5s; /* Vertraging voor Work Experience */
+}
+
+.skills {
+    animation-delay: 2s; /* Vertraging voor Skills */
+}
+
+.languages {
+    animation-delay: 2.5s; /* Vertraging voor Languages */
+}

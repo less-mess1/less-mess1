@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio</title>
+    <link rel="stylesheet" href="css/HeadFoot.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <meta name="description" content="Neem contact op met Bas Waaijer, student Software Developer aan het Grafisch Lyceum Rotterdam (GLR). Stuur een bericht voor samenwerking of vragen.">
+    <meta property="og:title" content="Contact - Portfolio Bas Waaijer">
+    <meta property="og:url" content="https://baswaaijer.nl/contact.html">
+    <meta name="twitter:title" content="Contact - Portfolio Bas Waaijer">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">Bas Waaijer</div>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="./About.html" class="nav-link">Over Mij</a>
+            <a href="./projects.html" class="nav-link">Projecten</a>
+            <a href="./CV.html" class="nav-link">CV</a>
+            <a href="./contact.html" class="nav-link active">Contact mij</a>
+        </div>
+    </nav>
+
+
+    <div class="background-container">
+        <div class="background-overlay"></div>
+        
+        <main class="contact-container">
+            <h1 class="page-title fade-in">Neem Contact Op</h1>
+            
+            <div class="contact-content slide-in">
+                <div class="contact-info">
+                    <h2>Contact Informatie</h2>
+                    <p>Vul het formulier in of neem direct contact op via:</p>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> 100221@glr.nl</li>
+                        <li><i class="fas fa-phone"></i> +06 38481925</li>
+                        <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/bas-waaijer">LinkedIn</a></li>
+                    </ul>
+                </div>
+
+                <form class="contact-form" action="process_form.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Naam</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Onderwerp</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Bericht</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Verstuur Bericht</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Bas Waaijer. Alle rechten voorbehouden.</p>
+            <p>
+                <a href="https://www.linkedin.com/in/bas-waaijer" target="_blank">LinkedIn</a> | 
+                <a href="mailto:100221@glr.nl">Mail: 100221@glr.nl</a> | 
+                <span>Telefoon: +06 38481925</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const message = urlParams.get('message');
+        
+        if (status === 'success') {
+            alert('Je bericht is succesvol verzonden! We nemen zo snel mogelijk contact met je op.');
+        } else if (status === 'error') {
+            alert(message || 'Er is helaas iets misgegaan. Probeer het later nog eens of stuur direct een e-mail naar 100221@glr.nl');
+        }
+    });
+    </script>
+    <script src="js/menu.js"></script>
+</body>
+</html> 
