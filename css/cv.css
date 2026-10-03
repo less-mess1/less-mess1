@@ -1,7 +1,9 @@
+/* ===== BASE ===== */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    color: #222;
 }
 
 .background-container {
@@ -10,157 +12,300 @@ body {
     left: 0;
     width: 100%;
     height: auto;
-    z-index: -2; /* Zorg ervoor dat de achtergrond onder de inhoud ligt */
-    background-image: url('../img/mountain.jpg'); /* Voeg je achtergrondafbeelding toe */
-    background-size: cover; /* Zorg ervoor dat de afbeelding de hele achtergrond bedekt */
-    background-position: center; /* Center de achtergrondafbeelding */
-    background-attachment: fixed; /* Zorg ervoor dat de achtergrond niet beweegt */
+    min-height: 100vh;
+    z-index: -2;
+    background-image: url('../img/mountain.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.main-content {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto; /* Voeg marge toe om ruimte te creëren */
-    background: rgba(255, 255, 255, 0.9); /* Hoofdinhoud achtergrondkleur met transparantie */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Begin met een onzichtbare container */
-    animation: fadeIn 1s forwards;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
-}
-
-h3 {
-    border-bottom: 2px solid #333; /* Onderstreping voor sectietitels */
-    padding-bottom: 5px;
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: rgba(0, 0, 0, 0.7); /* Voettekst achtergrondkleur */
+/* ===== HEADER ===== */
+.header {
+    position: relative;
     color: #fff;
-    margin-top: 50px;
+    text-align: center;
+    padding: 160px 20px 60px;
+    opacity: 0;
 }
 
-footer a {
-    color: #fff; /* Witte kleur voor de links in de footer */
-    text-decoration: none; /* Geen onderstreping */
-}
-
-footer a:hover {
-    text-decoration: underline; /* Onderstreping bij hover */
+.fade-in {
+    animation: fadeIn 1.2s ease forwards;
 }
 
 .profile-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px auto; /* Centraal uitlijnen met automatische marges */
-    max-width: 800px; /* Maximaal breedte instellen voor de container */
-    padding: 20px; /* Voeg wat padding toe voor ruimte */
-    background: rgba(255, 255, 255, 0.9); /* Achtergrondkleur voor de container */
-    border-radius: 10px; /* Maak de hoeken van de container rond */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
-    padding-bottom: 100px;
-    margin-bottom: 50px;
+    gap: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .profile-photo-container {
-    width: 150px; /* Gewenste breedte van de profielfoto container */
-    height: 150px; /* Gewenste hoogte van de profielfoto container */
-    overflow: hidden; /* Verberg eventuele overflow om de afbeelding bij te snijden */
-    border-radius: 50%; /* Maak de container rond */
-    margin-right: 20px; /* Ruimte tussen de foto en de tekst */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Schaduw voor diepte */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .profile-photo {
-    width: 100%; /* Vul de container breedte */
-    height: 100%; /* Vul de container hoogte */
-    object-fit: cover; /* Snijd de afbeelding bij om de container te vullen */
-    object-position: center; /* Centreer de afbeelding binnen de container */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .profile-info {
-    text-align: center; /* Zorg ervoor dat de tekst links uitgelijnd is */
+    text-align: left;
 }
 
-.header {
-    position: relative;
-    color: #000;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    padding: 180px 20px 100px;
-    opacity: 0;
-}
-
-.header h1 {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 1rem;
+.profile-info h1 {
+    font-size: 2rem;
+    margin: 0 0 6px;
+    font-weight: 700;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
     opacity: 0;
     animation: fadeIn 1s forwards;
 }
 
-.header h1::after {
+.profile-info h1::after {
     content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
+    display: block;
+    margin-top: 8px;
+    width: 60px;
     height: 3px;
-    background: #000;
-    animation: expandLine 1s ease forwards;
+    background: rgba(255,255,255,0.8);
+    animation: expandLine 0.8s ease forwards 0.3s;
+    transform-origin: left;
+    transform: scaleX(0);
 }
 
-.header h2 {
-    transform: translateX(100%);
+.profile-info h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
     opacity: 0;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.85);
     animation: slideIn 1s forwards 0.5s;
 }
 
-.subtitle {
-    transform: translateX(-200%);
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    max-width: 860px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+        "personal  work"
+        "education work"
+        "skills    work"
+        "languages work";
+    gap: 20px;
     opacity: 0;
+    animation: fadeIn 1s forwards 0.4s;
 }
 
-/* Animatie showcase */
-.animation-showcase {
+/* ===== SECTIONS ===== */
+section {
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 12px;
+    padding: 22px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s forwards;
+}
+
+section h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6366f1;
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0f0;
+}
+
+/* Grid areas */
+.personal-info  { grid-area: personal;  animation-delay: 0.5s; }
+.education      { grid-area: education; animation-delay: 0.7s; }
+.skills         { grid-area: skills;    animation-delay: 0.9s; }
+.languages      { grid-area: languages; animation-delay: 1.1s; }
+.work-experience{ grid-area: work;      animation-delay: 0.6s; }
+
+/* ===== PERSONAL INFO ===== */
+.personal-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.personal-info li {
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+.personal-info li strong {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #888;
+    margin-bottom: 2px;
+}
+
+/* ===== EDUCATION ===== */
+.education ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.education li {
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.education li strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* ===== SKILLS ===== */
+.skills ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skills li {
+    font-size: 0.85rem;
+    background: #f0f0fb;
+    color: #4b4bcc;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* ===== LANGUAGES ===== */
+.languages ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.languages li {
+    font-size: 0.88rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.languages li:last-child {
+    border-bottom: none;
+}
+
+/* ===== WORK EXPERIENCE ===== */
+.work-experience > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    padding: 40px 0;
 }
 
-.floating-element {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6);
-    border-radius: 50%;
+.work-experience > ul > li {
+    padding-left: 14px;
+    border-left: 3px solid #6366f1;
 }
 
-/* Animatie classes */
-.fade-in {
-    animation: fadeIn 1.5s ease forwards;
+.work-experience > ul > li > strong {
+    display: block;
+    font-size: 0.97rem;
+    color: #222;
+    margin-bottom: 4px;
 }
 
-.slide-in {
-    animation: slideIn 1s ease forwards;
-    animation-delay: 0.5s;
+.work-experience > ul > li > ul {
+    margin: 8px 0 0 4px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-/* Keyframes */
+.work-experience > ul > li > ul > li {
+    font-size: 0.85rem;
+    color: #555;
+    padding-left: 12px;
+    position: relative;
+}
+
+.work-experience > ul > li > ul > li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 18px 20px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    color: #ccc;
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+footer a {
+    color: #a5b4fc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== KEYFRAMES ===== */
 @keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+    to { opacity: 1; }
 }
 
 @keyframes slideIn {
     from {
-        transform: translateX(100%);
+        transform: translateX(40px);
         opacity: 0;
     }
     to {
@@ -169,42 +314,40 @@ footer a:hover {
     }
 }
 
-@keyframes fadeIn {
+@keyframes slideUp {
     to {
-        opacity: 1; /* Eindig met volledig zichtbare container */
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-section {
-    opacity: 0; /* Begin met een onzichtbare sectie */
-    transform: translateY(20px); /* Begin iets naar beneden */
-    animation: slideIn 0.5s forwards; /* Slide-in animatie */
+@keyframes expandLine {
+    to { transform: scaleX(1); }
 }
 
-@keyframes slideIn {
-    to {
-        opacity: 1; /* Eindig met volledig zichtbare sectie */
-        transform: translateY(0); /* Eindig op de normale positie */
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "personal"
+            "education"
+            "work"
+            "skills"
+            "languages";
     }
-}
 
-/* Specifieke animaties voor elke sectie met vertraging */
-.personal-info {
-    animation-delay: 0.5s; /* Vertraging voor Personal Information */
-}
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 20px;
+    }
 
-.education {
-    animation-delay: 1s; /* Vertraging voor Education */
-}
+    .profile-info {
+        text-align: center;
+    }
 
-.work-experience {
-    animation-delay: 1.5s; /* Vertraging voor Work Experience */
-}
-
-.skills {
-    animation-delay: 2s; /* Vertraging voor Skills */
-}
-
-.languages {
-    animation-delay: 2.5s; /* Vertraging voor Languages */
+    .profile-info h1::after {
+        margin: 8px auto 0;
+    }
 }
